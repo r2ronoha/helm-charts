@@ -33,6 +33,7 @@ spec:
       sourceLabels:
         - __meta_kubernetes_pod_host_ip
     {{- if .Values.metrics.serviceMonitor.additionalRelabelings }}
+    metricRelabelings:
     {{- toYaml .Values.metrics.serviceMonitor.additionalRelabelings | nindent 4 }}
     {{- end }}
     {{- if .Values.metrics.serviceMonitor.metricRelabelings }}
