@@ -23,7 +23,11 @@ spec:
   - port: exporter
     path: /metrics
     interval: 60s
+    {{- if .Values.metrics.serviceMonitor.metricRelabelings }}
+    metricRelabelings:
+    {{- else }}
     relabelings:
+    {{- end }}
     - action: replace
       targetLabel: node
       sourceLabels:
